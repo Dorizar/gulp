@@ -1,11 +1,16 @@
-/* footer */
-
-/* header less*/
-body {
-  background: green;
-  width: 300px;
+.header-bg {
+  background: #c4a2e2 url('../../img/Clouds_Servers_bg/Clouds.png');
+  background-position: center bottom -16px;
+  background-size: cover 115px;
+  background-repeat: no-repeat;
+  min-height: 378px;
+}
+.header-bg.pos_relative {
+  position: relative;
+  min-height: 385px;
+}
+h3 {
+  color: tomato;
 }
 
-/* main */
 
-/*# sourceMappingURL=maps/style.css.map */

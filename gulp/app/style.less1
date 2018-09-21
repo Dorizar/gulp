@@ -1,3 +1,0 @@
-@import (less) url("block/style/header.less");
-@import (less) url("block/style/main.less");
-@import (less) url("block/style/footer.less");

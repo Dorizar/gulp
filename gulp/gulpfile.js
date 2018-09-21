@@ -7,9 +7,9 @@ var pug = require('gulp-pug');
 var less = require('gulp-less');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps'); 
+var sourcemaps = require('gulp-sourcemaps');
 
-gulp.task('build', ['sass','default'] , function(){});
+//gulp.task('build', ['sass','default'] , function(){});
 
 //sync compass
 
@@ -18,9 +18,26 @@ gulp.task('build', ['sass','default'] , function(){});
 
 
  
+// build
 
+gulp.task('buld',function(){
+	var buildcss = gulp.src(['app/**/*.css'])
+	.pipe(gulp.dest('build'))
 
+	var buildlibs = gulp.src([
+		'app/**/libr/**/',
+		'app/**/fonts/**/',
+		'app/**/img/**/'])
+	.pipe(gulp.dest('build'))
 
+	var buildjs = gulp.src([
+		'app/**/js/**/*.js'])
+	.pipe(gulp.dest('build'))
+
+	var buildhtml = gulp.src([
+		'app/**/**/*.html'])
+	.pipe(gulp.dest('build'))
+});
 
 
 
@@ -30,7 +47,7 @@ gulp.task('build', ['sass','default'] , function(){});
 
 //Sass
 gulp.task('sass', function(){
-	return gulp.src('app/block/sass/*.sass')
+	return gulp.src('app/block/sass/main-basic.sass')
 	.pipe(plumber({
 		errorHandler: notify.onError(function(error){
 			return {
@@ -55,7 +72,7 @@ gulp.task('sass', function(){
 
 //less
 gulp.task('less', function(){
-	return gulp.src('app/block/less/*.less')  
+	return gulp.src('app/block/less/main-basic.less')  
 	.pipe(plumber({
 		errorHandler: notify.onError(function(error){
 			return {
@@ -139,7 +156,9 @@ gulp.task('default', ['browser-sync'], function(){
 	gulp.watch('app/js/may_script.js', browserSync.reload);
 	gulp.watch('app/block/pug/**/*.pug',['pug']);
 	gulp.watch('app/block/jq/*.js',['js']);
+	gulp.watch('app/block/sass/modules/*.sass',['sass'], browserSync.reload);
 	gulp.watch('app/block/sass/*.sass',['sass']);
+	gulp.watch('app/block/less/modules/*.less',['less'], browserSync.reload);
 	gulp.watch('app/block/less/*.less',['less']);
 });
 
