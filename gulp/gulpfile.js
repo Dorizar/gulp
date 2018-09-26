@@ -160,6 +160,7 @@ gulp.task('default', ['browser-sync'], function(){
 	gulp.watch('app/block/sass/*.sass',['sass']);
 	gulp.watch('app/block/less/modules/*.less',['less'], browserSync.reload);
 	gulp.watch('app/block/less/*.less',['less']);
+	gulp.watch('app/block/less/mixin/*.less',['less']);
 });
 
 
